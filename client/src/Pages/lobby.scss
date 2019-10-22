@@ -1,0 +1,16 @@
+#lobby-container{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    justify-content:center;
+}
+.playerList{
+    display:flex;
+    flex-direction:column;
+    border:1px solid black;
+    width:77vw;
+    height:50vh;
+}
+.playerList li{
+    list-style-type:none;
+}
