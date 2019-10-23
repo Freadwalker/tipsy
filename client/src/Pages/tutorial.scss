@@ -1,0 +1,17 @@
+#tutorial-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.tutorialText{
+    position:relative;
+    top:15vh;
+    font-size:4em;
+    width:50vw;
+    color:black;
+    font-family:roboto;
+    background-color:lightblue;
+    padding:100px;
+    font-weight:900;
+}

@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Home from "./Pages/home";
 import Lobby from "./Pages/Lobby";
 import Login from "./Pages/login"
+import Tutorial from "./Pages/tutorial"
 require('dotenv').config();
 
 export default class App extends Component {
@@ -14,6 +15,7 @@ export default class App extends Component {
           <Route exact path="/" component={Home}/>
           <Route path="/lobby" component={Lobby}/>
           <Route path="/login" component={Login}/>
+          <Route path ="/tutorial" component={Tutorial}/>
         </Switch>
       </Router>
     );
