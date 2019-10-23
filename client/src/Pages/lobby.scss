@@ -14,3 +14,30 @@
 .playerList li{
     list-style-type:none;
 }
+#start-game-button{
+    width:30vw;
+    height: 10vh;
+    background-color:green;
+    border-style:none;
+    border-radius:100px;
+    font-size:2em;
+    animation:colorChange 11s infinite;
+    margin-top:40px;
+    color:white;
+    font-weight:900
+}
+@keyframes colorChange{
+    10%{background-color:blue}
+    20%{background-color:red;}
+    30%{background-color:green;}
+    40%{background-color:yellow;}
+    50%{background-color: orange}
+    60%{background-color: violet}
+    70%{ background-color:blue}
+    80%{background-color: red;}
+    90%{background-color: green}
+    100%{background-color:yellow}
+}
+.lobbyHeader{
+    font-size:5em;
+}
