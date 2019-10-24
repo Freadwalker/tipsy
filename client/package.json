@@ -10,6 +10,7 @@
     "menuitem": "0.0.5",
     "mongoose": "^5.7.6",
     "node-sass": "^4.12.0",
+    "qs": "^6.9.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-router-dom": "^5.1.2",

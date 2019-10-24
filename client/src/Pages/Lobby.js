@@ -15,10 +15,11 @@ export default class Lobby extends Component {
             return i;
     }
     componentDidMount(){
-      axios.get(`https://localhost:3001/lobby/${this.state.lobbykey}`)
-       then(res=>{
-        
+      axios.get(`http://localhost:3001/lobby/${this.state.lobbykey}`)
+       .then(res=>{
+         alert(res.data)
       })
+      .catch(err => console.log(err))
     }
   render() {
     return (
@@ -28,12 +29,7 @@ export default class Lobby extends Component {
         <div class="lobby-key"><span>Lobby Key: </span>{this.state.lobbykey}</div>       
         
         <ul class="playerList">
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
+        
         </ul>
         <Link to="/tutorial"> <button id="start-game-button">Start Game</button></Link>
       </div>
