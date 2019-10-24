@@ -9,7 +9,7 @@ export default class login extends Component {
         super();
         this.state={
             username:"",
-            gamePin:""
+            pin:""
         }
 
         this.handleSubmit=this.handleSubmit.bind(this)
@@ -19,7 +19,7 @@ export default class login extends Component {
     handleSubmit=(e)=>{
         e.preventDefault()
         
-        if(this.state.username===""||this.state.gamePin===""){
+        if(this.state.username===""||this.state.pin===""){
             return
         }
         axios({
@@ -31,7 +31,8 @@ export default class login extends Component {
             }
         })
         .then(res=>{
-            this.props.history.push("/lobby")
+        
+            // this.props.history.push("/lobby")
         })
         .catch(err=>{
             
@@ -59,8 +60,8 @@ export default class login extends Component {
                         <input class="input" value={this.state.username} onChange={this.handleChange} 
                         name="username" id="username-input" placeholder="Username"/>
 
-                        <input class="input"  value={this.state.gamePin} onChange = {this.handleChange}
-                         name="gamePin" id="pin-input" placeholder ="GamePIN"/>
+                        <input class="input"  value={this.state.pin} onChange = {this.handleChange}
+                         name="pin" id="pin-input" placeholder ="GamePIN"/>
                          
                         <button type = "submit" id="submit-button">Join Lobby</button>
                     </form>

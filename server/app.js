@@ -11,7 +11,7 @@ var userRouter = require("./routes/createUser")
 var cors= require("cors")
 var bodyParser = require('body-parser')
 var app = express();
-
+var socket= require('socket.io');
 
 //mongoose setup
 mongoose
