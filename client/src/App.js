@@ -5,7 +5,6 @@ import Home from "./Pages/home";
 import Lobby from "./Pages/Lobby";
 import Login from "./Pages/login"
 import Tutorial from "./Pages/tutorial"
-require('dotenv').config();
 
 export default class App extends Component {
   render() {

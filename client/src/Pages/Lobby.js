@@ -7,36 +7,43 @@ import io from "socket.io-client";
 
 export default class Lobby extends Component {
   state = {
-    pin: this.generateRandomKey(),
+    pin: Math.floor(Math.random() * 90000) + 10000,
     players: []
   };
 
-  generateRandomKey() {
-    let i = Math.floor(Math.random() * 89999) + 10000;
-    return i;
-  }
   componentDidMount() {
-    axios
-      .get(`http://localhost:3001/lobby/${this.state.pin}`)
-      .then(res => {
-        const socket = io(`${process.env.REACT_APP_API}/${this.state.pin}`);
+    const socket = io("localhost:3001/lobby");
+    const pin = this.state.pin;
+    debugger;
 
-        
-        socket.on("signup", data => {
-          debugger
-          this.setState({players:data})
-        })
+    socket.emit("join-room", { pin: pin });
 
-        
+    socket.on(`${this.state.pin}`, data => {
 
-      })
-      .catch(err => {
-        debugger
-        console.log(err)
+      socket.on("player.joined", data => {
+
+        debugger;
+        let newPlayers = [...this.state.players];
+        debugger;
+        newPlayers.push(data.username);
+        this.setState({ players: newPlayers });
       });
-
-
+    });
+    // socket.on("player-joined", data => {
+    //   debugger;
+    //   let newPlayers = [...this.state.players];
+    //   debugger;
+    //   newPlayers.push(data.username);
+    //   this.setState({ players: newPlayers });
+    // });
+    socket.on("player-joined", data => {
+      debugger
+      this.setState({
+          players: [...this.state.players, data.username]
+      })
+  })        
   }
+
   render() {
     return (
       <div id="lobby-container">
@@ -46,9 +53,7 @@ export default class Lobby extends Component {
           {this.state.pin}
         </div>
 
-        <ul class="playerList">
-          {this.state.players.map}
-        </ul>
+        <ul class="playerList">{this.state.players.map}</ul>
         <Link to="/tutorial">
           {" "}
           <button id="start-game-button">Start Game</button>
