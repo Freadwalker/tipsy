@@ -11,7 +11,10 @@ module.exports = function(io) {
             Session.create({pin:data.pin})
             client.join(data.pin)
         })
-        
+
+        client.on("join",data=>{
+            client.join(data.pin)
+        }) 
         client.on("signup", data=> {
             Session.findOne({pin:data.pin})
             .then(session=>{
@@ -25,7 +28,8 @@ module.exports = function(io) {
         })
         
         client.on("start-game", (data)=>{
-            io.to(data.pin).emit("game-started")
+            client.join(data.pin);
+            client.to(data.pin).emit("game-started")
         })
     
     })

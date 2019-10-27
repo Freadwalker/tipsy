@@ -23,6 +23,7 @@ mongoose
   });
 
 require("./socket-endpoints/lobby")(io)
+require("./socket-endpoints/game")(io)
 
 server.listen(process.env.PORT, ()=> {
   console.log("Listening on port", process.env.PORT)
