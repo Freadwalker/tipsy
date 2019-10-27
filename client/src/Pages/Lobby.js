@@ -6,42 +6,29 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import io from "socket.io-client";
 
 export default class Lobby extends Component {
+
+
   state = {
-    pin: ""+Math.floor(Math.random() * 90000) + 10000,
+    pin: ""+(Math.floor(Math.random() * 90000) + 10000),
     players: []
   };
+
+
   componentDidMount() {
-    const socket = io("localhost:3001/lobby");
+    //setting up socket and pin
+    const socket = io("10.10.20.31:3001/lobby");
     const pin = this.state.pin;
-
+    //saving lobby-pin in localStorage
+    localStorage.setItem("pin",pin)
+    localStorage.setItem("Host",true)
+    //create socket room with lobby-pin
     socket.emit("join-room", { pin: pin })
-
-    socket.on("player-joined",data=>{
-      console.log("It worked")
-      
+    //listening for newPlayers
+    socket.on("player-joined",data=>{ 
       let newPlayers = [...this.state.players];
-      
       newPlayers.push(data.username);
       this.setState({ players: newPlayers });
     })
-
-    socket.on(`${this.state.pin}`, client => {
-              client.on("player-joined", data => {
-
-        
-        let newPlayers = [...this.state.players];
-        
-        newPlayers.push(data.username);
-        this.setState({ players: newPlayers });
-      });
-    });
-    // socket.on("player-joined", data => {
-    //   
-    //   let newPlayers = [...this.state.players];
-    //   
-    //   newPlayers.push(data.username);
-    //   this.setState({ players: newPlayers });
-    // });
     
   }
 
@@ -55,9 +42,15 @@ export default class Lobby extends Component {
           {this.state.pin}
         </div>
 
-        <ul class="playerList"></ul>
+        <ul class="playerList">
+        
+        {this.state.players.map(player=>{
+          return(<li>{player}</li>)
+        })}
+
+        </ul>
+        
         <Link to="/tutorial">
-          
           <button id="start-game-button">Start Game</button>
         </Link>
       </div>

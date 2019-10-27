@@ -22,12 +22,13 @@ export default class login extends Component {
     if (this.state.username === "" || this.state.pin === "") {
       return;
     }
+
+
     const player = { username: this.state.username, pin: this.state.pin };
-    const socket = io(`localhost:3001/lobby`);
-
+    const socket = io(`10.10.20.31:3001/lobby`);
     
-
     socket.emit("signup", player);
+    localStorage.setItem("host",false)
   };
 
   handleChange = e => {

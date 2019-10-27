@@ -19,7 +19,9 @@ module.exports = function(io) {
             })
 
             client.join(data.pin)
+
             client.to(data.pin).emit("player-joined", {username: data.username})
+            
         })
         
         client.on("start-game", (data)=>{
