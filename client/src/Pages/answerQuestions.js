@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Switch, Route, Link ,Redirect} from "react-rou
 
 export default class AnswerQuestions extends Component {
   state={
-    redirect : false
+    redirect : false,
+    questionOne:null,
+    questionTwo:nullx
   }
   componentDidMount(){
 
@@ -16,8 +18,11 @@ export default class AnswerQuestions extends Component {
   render() {
 
     return (
-        <div id="waiting-container">
-        <p class="waitingText"></p>
+        <div id="answer-container">
+        <p class="answerText"></p>
+
+        
+
         {this.state.redirect
             ? <Redirect to="/waiting" />
             : null}

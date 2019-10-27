@@ -9,10 +9,14 @@ module.exports = function(io) {
         client.on("join",data=>{
             client.join(data.pin);
         })
-        
+
         client.on("start-game", (data)=>{
             client.join(data.pin);
             client.to(data.pin).emit("game-started")
+        })
+        
+        client.on("player-count",data=>{
+
         })
 
     })
