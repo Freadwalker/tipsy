@@ -28,7 +28,6 @@ let questions=[
 "What's the next Happy Meal Toy?",
 "What gives me uncontrollable Gas?",
 "TSA guidelines now prohibit ______ on airplanes."
-
 ]   
 
 const questionSchema= new Schema({

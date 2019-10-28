@@ -27,8 +27,9 @@ export default class login extends Component {
     socket.emit("signup", player);
 
     localStorage.setItem("Host",false)
-
-    this.props.history.push("/waiting")
+    localStorage.setItem("username",this.state.username);
+      
+    this.props.history.push("/waiting");
 
   };
 

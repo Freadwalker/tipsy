@@ -15,6 +15,8 @@ module.exports = function(io) {
         client.on("join",data=>{
             client.join(data.pin)
         }) 
+
+
         client.on("signup", data=> {
             Session.findOne({pin:data.pin})
             .then(session=>{

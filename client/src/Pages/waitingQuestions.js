@@ -9,6 +9,13 @@ export default class WaitingQuestions extends Component {
     redirect : false
   }
   componentDidMount(){
+  const socket= io(`localhost:3000/game`);
+  const pin = localStorage.getItem("pin");
+  const gameQuestionsOne= JSON.parse(localStorage.getItem("questionsOne"));
+
+  gameQuestionsOne[pin]=localStorage.getItem("pin");
+
+  socket.emit("questionsGameOne",gameQuestionsOne);
 
   }
 

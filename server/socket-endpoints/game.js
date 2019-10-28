@@ -14,11 +14,12 @@ module.exports = function(io) {
             client.join(data.pin);
             client.to(data.pin).emit("game-started")
         })
-        
-        client.on("player-count",data=>{
 
+        client.on("questionsGameOne",data=>{
+            client.join(data.pin)
+            client.to(data.pin).emit("questionsOne", data )
         })
-
+        
     })
     
 }
