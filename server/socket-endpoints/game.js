@@ -16,7 +16,7 @@ module.exports = function(io) {
         })
 
         client.on("questionsGameOne",data=>{
-            client.join(data.pin)
+            client.join(data.pin);
             client.to(data.pin).emit("questionsOne", data )
         })
         

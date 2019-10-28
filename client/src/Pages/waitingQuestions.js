@@ -9,13 +9,13 @@ export default class WaitingQuestions extends Component {
     redirect : false
   }
   componentDidMount(){
-  const socket= io(`localhost:3000/game`);
+  const socket= io(`10.10.20.31:3001/game`);
   const pin = localStorage.getItem("pin");
   const gameQuestionsOne= JSON.parse(localStorage.getItem("questionsOne"));
 
-  gameQuestionsOne[pin]=localStorage.getItem("pin");
+  gameQuestionsOne["pin"]=pin;
 
-  socket.emit("questionsGameOne",gameQuestionsOne);
+  setTimeout( ()=>{socket.emit("questionsGameOne",gameQuestionsOne)},2000)
 
   }
 
@@ -24,8 +24,8 @@ export default class WaitingQuestions extends Component {
     return (
         <div id="waiting-questions-container">
         <p class="waitingQuestionsext">
-
-        Enter your questions on your device!
+        Answer the questions on your phone!
+      
         
         </p>
         {this.state.redirect

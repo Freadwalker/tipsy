@@ -22,13 +22,13 @@ export default class login extends Component {
     }
 
     const player = { username: this.state.username, pin: this.state.pin };
-    const socket = io(`localhost:3001/lobby`);
+    const socket = io(`10.10.20.31:3001/lobby`);
     
     socket.emit("signup", player);
 
     localStorage.setItem("Host",false)
     localStorage.setItem("username",this.state.username);
-      
+    localStorage.setItem("pin",this.state.pin)
     this.props.history.push("/waiting");
 
   };

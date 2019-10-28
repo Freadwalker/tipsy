@@ -8,13 +8,12 @@ export default class Waiting extends Component {
     redirect : false
   }
   componentDidMount(){
-    const socket = io("localhost:3001/game");
+    const socket = io("10.10.20.31:3001/game");
     const pin = localStorage.getItem("pin");
 
     socket.emit("join",{pin:pin})
-    debugger
     socket.on("game-started",data=>{
-      debugger
+
         this.setState({redirect:true})
     })
 
