@@ -4,11 +4,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { Component } from "react";
 import Home from "./Pages/home";
 import Lobby from "./Pages/Lobby";
-import Login from "./Pages/login"
-import Tutorial from "./Pages/tutorial"
-import Waiting from "./Pages/waiting"
-import WaitingQuestions from "./Pages/waitingQuestions"
-import AnswerQuestions from "./Pages/answerQuestions"
+import Login from "./Pages/login";
+import Tutorial from "./Pages/tutorial";
+import Waiting from "./Pages/waiting";
+import WaitingQuestions from "./Pages/waitingQuestions";
+import AnswerQuestions from "./Pages/answerQuestions";
+
+import votingHost from "./Pages/votingHost";
+
+import votingPlayer from "./Pages/votingPlayer";
 
 export default class App extends Component {
   render() {
@@ -24,6 +28,8 @@ export default class App extends Component {
           <Route path ="/waiting" component={Waiting}/>
           <Route path = "/waitingQuestions" component={WaitingQuestions}/>
           <Route path = "/answerQuestions" component={AnswerQuestions}/>
+          <Route exact path = "/votingHost" component = {votingHost}/>
+          <Route exact path = "/votingPlayer" component = {votingPlayer}/>
 
         </Switch>
 

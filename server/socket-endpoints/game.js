@@ -20,6 +20,11 @@ module.exports = function(io) {
             client.to(data.pin).emit("questionsOne", data )
         })
         
+        client.on("answersSubmit",data=>{
+            client.join(data.pin);
+            client.to(data.pin).emit("answersToQuestions",data)
+        })
+
     })
     
 }

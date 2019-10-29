@@ -18,15 +18,8 @@ module.exports = function(io) {
 
 
         client.on("signup", data=> {
-            Session.findOne({pin:data.pin})
-            .then(session=>{
-                Player.create({username:data.username,session:session._id})
-            })
-
             client.join(data.pin)
-
             client.to(data.pin).emit("player-joined", {username: data.username})
-            
         })
         
         client.on("start-game", (data)=>{

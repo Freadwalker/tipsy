@@ -8,8 +8,9 @@
     display:flex;
     flex-direction:column;
     border:1px solid black;
-    width:77vw;
+    width:50vw;
     height:50vh;
+    align-items:center
 }
 .playerList li{
     list-style-type:none;
@@ -30,14 +31,18 @@
     10%{background-color:blue}
     20%{background-color:red;}
     30%{background-color:green;}
-    40%{background-color:yellow;}
+    40%{background-color:blue;}
     50%{background-color: orange}
     60%{background-color: violet}
     70%{ background-color:blue}
     80%{background-color: red;}
     90%{background-color: green}
-    100%{background-color:yellow}
+    100%{background-color:orange}
 }
 .lobbyHeader{
     font-size:5em;
+}
+.player{
+    font-size:2em;
+    font-weight:800;
 }

@@ -98,33 +98,40 @@ export default class Lobby extends Component {
       e.preventDefault();
       localStorage.setItem("playerCount",this.state.players.length)
       localStorage.setItem("players",this.state.players)
- 
 
       let questionsArrayGame=createQuestions(this.state.players.length,questions);
+      const questionsRoundOne=questionsArrayGame[0];
+      const questionsRoundTwo=questionsArrayGame[1];
+      const questionsRoundThree=questionsArrayGame[2];
+
+      localStorage.setItem("questionsRoundOne",questionsRoundOne);
+      localStorage.setItem("questionsRoundTwo",questionsRoundTwo);
+      localStorage.setItem("questionsRoundThree",questionsRoundThree);
 
       const questionsOne= pair(this.state.players,questionsArrayGame[0])
       const questionsTwo= pair(this.state.players,questionsArrayGame[1])
       const questionsThree= pair(this.state.players,questionsArrayGame[2])
-
-
-
 
       localStorage.setItem("questionsOne",JSON.stringify(questionsOne));
       localStorage.setItem("questionsTwo",JSON.stringify(questionsTwo));
       localStorage.setItem("questionsThree",JSON.stringify(questionsThree));
 
       this.props.history.push("/tutorial")
-  }
+
+    }
 
   componentDidMount() {
     //setting up socket and pin
     const socket = io("10.10.20.31:3001/lobby");
     const pin = this.state.pin;
+
     //saving lobby-pin in localStorage
     localStorage.setItem("pin",pin)
     localStorage.setItem("Host",true)
+
     //create socket room with lobby-pin
     socket.emit("join-room", { pin: pin })
+
     //listening for newPlayers
     socket.on("player-joined",data=>{ 
       let newPlayers = [...this.state.players];
@@ -147,7 +154,7 @@ export default class Lobby extends Component {
         <ul class="playerList">
         
         {this.state.players.map(player=>{
-          return(<li>{player}</li>)
+          return(<li class="player">{player}</li>)
         })}
 
         </ul>
