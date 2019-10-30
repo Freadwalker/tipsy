@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import io from "socket.io-client";
+import "./votingPlayer.scss"
 
 export default class voting extends Component {
     constructor(props){
@@ -35,14 +36,14 @@ export default class voting extends Component {
     render() {
         return (
             <div>
-                <h1>Vote for the funniest answer!</h1>
-                {this.state.show?<div>
+                <h1 class="voteHeader">Vote for the funniest answer!</h1>
+                {this.state.show?<div class="buttonContainer">
                 <form onSubmit={this.handleSubmit.bind(this)}>
 
-                <button type="submit">First Answer</button>
+                <button class="buttonOne"type="submit">First Answer</button>
                 
     </form>
-    <button onClick={this.handleAlternate.bind(this)}>Second Answer</button></div>:null}
+    <button class="buttonTwo" onClick={this.handleAlternate.bind(this)}>Second Answer</button></div>:null}
             </div>
         )
     }

@@ -65,7 +65,7 @@ export default class AnswerQuestions extends Component {
       this.props.history.push("/waiting");
     }
     this.setState({count:1})
-    e.target.value="";
+    document.getElementById("answer-input").value=""
   }
   showQuestion=()=>{
     
