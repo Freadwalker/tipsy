@@ -9,10 +9,9 @@ import Tutorial from "./Pages/tutorial";
 import Waiting from "./Pages/waiting";
 import WaitingQuestions from "./Pages/waitingQuestions";
 import AnswerQuestions from "./Pages/answerQuestions";
-
 import votingHost from "./Pages/votingHost";
-
 import votingPlayer from "./Pages/votingPlayer";
+import scoreScreen from "./Pages/scoreScreen";
 
 export default class App extends Component {
   render() {
@@ -20,7 +19,7 @@ export default class App extends Component {
       <Router>
 
         <Switch>
-
+      
           <Route exact path="/" component={Home}/>
           <Route path="/lobby" component={Lobby}/>
           <Route path="/login" component={Login}/>
@@ -30,6 +29,7 @@ export default class App extends Component {
           <Route path = "/answerQuestions" component={AnswerQuestions}/>
           <Route exact path = "/votingHost" component = {votingHost}/>
           <Route exact path = "/votingPlayer" component = {votingPlayer}/>
+          <Route path = "/scoreScreen" component = {scoreScreen}/>
 
         </Switch>
 

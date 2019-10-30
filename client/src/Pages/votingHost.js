@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link ,Redirect} from "react-router-dom";
 import io from "socket.io-client";
-import { throws } from 'assert';
+
 
 
 
@@ -71,6 +71,7 @@ function questionsAndAnswers(question,answerObjectArray){
 export default class voteScreen extends Component {
   constructor(props)
    {
+     super(props);
      this.state={
         roundOne:null,
         roundTwo:null,
@@ -80,6 +81,13 @@ export default class voteScreen extends Component {
     }
     componentDidMount(){
       debugger
+        const socket = io(`10.10.20.31:3001/game`)
+        const pin = localStorage.getItem("pin")
+        const points=100;
+        socket.emit("join",{pin});
+        setTimeout(()=>{ socket.emit("toVoting",{pin})},1000)
+       
+
        let questionArrayOne = localStorage.getItem("questionsRoundOne")
     //    const questionArrayTwo =JSON.parse(localStorage.getItem("questionsTwo"));
     //    const questionArrayThree = JSON.parse(localStorage.getItem("questionsThree"));
@@ -88,29 +96,51 @@ export default class voteScreen extends Component {
     //    const answersArrayOne=JSON.parse(localStorage.getItem("answersTwo")); 
     //    const answersArrayOne=JSON.parse(localStorage.getItem("answersTwo")); 
     debugger
-        questionArrayOne=questionArrayOne.split(",")
-        answersArrayOne=answersArrayOne.split(",")
-        answersArrayOne=JSON.parse(answersArrayOne)
+        questionArrayOne=questionArrayOne.split(",");
+        answersArrayOne=answersArrayOne.split(",");
+        answersArrayOne=JSON.parse(answersArrayOne);
         debugger
        let roundOneArray = arrayOfQuestionsAndAnswers(questionArrayOne,answersArrayOne)
         this.setState({roundOne:roundOneArray})
         let count = 0;
+        let players=localStorage.getItem("players");
+        players=players.split(",");
         let intervalID=setInterval(()=>{
-          if(localStorage.getItem("players").length===count){
+          if(players.length-1===count){
            clearInterval(intervalID);
-           this.props.history.push("/");
+           this.props.history.push("/scoreScreen");
           }
+
           count++;
           this.setState({questionCount:count})
+          socket.emit("nextQuestion",{pin})
         },15000)
-       
+        let playerScore=JSON.parse(localStorage.getItem("playerScore"))
+        socket.on("voteFirst",()=>{
+          debugger
+          playerScore[this.state.roundOne[this.state.questionCount].player1]+=points;
+          localStorage.setItem("playerScore",JSON.stringify(playerScore))
+        })
+        socket.on("voteSecond",()=>{
+          playerScore[this.state.roundOne[this.state.questionCount].player2]+=points
+          debugger
+          localStorage.setItem("playerScore",JSON.stringify(playerScore))
+        })
+        
     }
 
     showQuestion(){
         if(this.state.roundOne){
           
           
-        return(questionsDisplay(this.state.questionCount));
+        return(            <div class="questionsAndAnswers">
+        <h1>
+{this.state.roundOne[this.state.questionCount].question}
+
+</h1> <h2>{this.state.roundOne[this.state.questionCount].player1} says:      
+  {this.state.roundOne[this.state.questionCount].answer1}</h2><h2>{this.state.roundOne[this.state.questionCount].player2}   
+  says:   
+    {this.state.roundOne[this.state.questionCount].answer2}</h2></div>)
         }
     }
     
@@ -118,13 +148,7 @@ export default class voteScreen extends Component {
         return (
             <div id="vote-screen-container">
 
-            <div class="questionsAndAnswers"><h1>
-    {this.state.roundOne[this.state.questionCount].question}
-    
-    </h1> <h2>{this.state.roundOne[this.state.questionCount].player1} says:      
-      {this.state.roundOne[this.state.questionCount].answer1}</h2><h2>{this.state.roundOne[this.state.questionCount].player2}   
-      says:   
-        {this.state.roundOne[this.state.questionCount].answer2}</h2></div>
+            {this.showQuestion()}
         
             </div>
         )

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import './home.scss'    
 import {BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 export default class Home extends Component {
+  componentDidMount(){
+    localStorage.clear();
+  }
   render() {
     return (
       <div id="home-container">

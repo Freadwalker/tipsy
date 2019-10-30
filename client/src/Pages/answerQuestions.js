@@ -62,7 +62,7 @@ export default class AnswerQuestions extends Component {
       }
       debugger
       socket.emit("answersSubmit",answers)
-      this.props.history.push("/votingPlayer");
+      this.props.history.push("/waiting");
     }
     this.setState({count:1})
     e.target.value="";
@@ -102,7 +102,7 @@ export default class AnswerQuestions extends Component {
         </form>
 
         {this.state.redirect
-            ? <Redirect to="/" />
+            ? <Redirect to="/waiting" />
             : null}
         </div>
      

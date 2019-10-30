@@ -6,23 +6,29 @@ import { BrowserRouter as Router, Switch, Route, Link ,Redirect} from "react-rou
 export default class WaitingQuestions extends Component {
 
   state={
-    redirect : false
+    redirect : false,
+    count:0
   }
   componentDidMount(){
   const socket= io(`10.10.20.31:3001/game`);
   const pin = localStorage.getItem("pin");
   const gameQuestionsOne= JSON.parse(localStorage.getItem("questionsOne"));
-    
+  let players=localStorage.getItem("players");
+  players=players.split(",");
   gameQuestionsOne["pin"]=pin;
 
   let answerInformation=[];
-  
+  let count=0;
   socket.emit("join",{pin:pin})
 
   socket.on("answersToQuestions",data=>{
-    
+      count++
       answerInformation.push(data);
       localStorage.setItem("answersOne",JSON.stringify(answerInformation));
+      this.setState({count:count});
+      if(this.state.count===players.length){
+        this.setState({redirect:true})
+      }
   })
 
   setTimeout( ()=>{socket.emit("questionsGameOne",gameQuestionsOne)},2000)
@@ -37,7 +43,7 @@ export default class WaitingQuestions extends Component {
         Answer the questions on your phone!
         </p>
         {this.state.redirect
-            ? <Redirect to="/lobby" />
+            ? <Redirect to="/votingHost" />
             : null}
         </div>
      

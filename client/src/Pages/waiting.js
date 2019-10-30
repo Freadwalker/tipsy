@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link ,Redirect} from "react-rou
 
 export default class Waiting extends Component {
   state={
-    redirect : false
+    redirectAnswer : false,
+    redirectVote:false
   }
   componentDidMount(){
     const socket = io("10.10.20.31:3001/game");
@@ -14,9 +15,11 @@ export default class Waiting extends Component {
     socket.emit("join",{pin:pin})
     socket.on("game-started",data=>{
 
-        this.setState({redirect:true})
+        this.setState({redirectAnswer:true})
     })
-
+    socket.on("goVoting",()=>{
+      this.setState({redirectVote:true})
+    })
   }
 
   render() {
@@ -24,8 +27,11 @@ export default class Waiting extends Component {
     return (
         <div id="waiting-container">
         <p class="waitingText">Look at the big screen!</p>
-        {this.state.redirect
+        {this.state.redirectAnswer
             ? <Redirect to="/answerQuestions" />
+            : null}
+            {this.state.redirectVote
+            ? <Redirect to="/votingPlayer" />
             : null}
         </div>
      
