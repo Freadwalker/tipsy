@@ -90,20 +90,29 @@ export default class votingHost extends Component {
     const socket = io(`10.10.20.31:3001/game`);
     const pin = localStorage.getItem("pin");
     const points = 100;
+    let actualRound=localStorage.getItem("actualRound");
     socket.emit("join", { pin });
     setTimeout(() => {
       socket.emit("toVoting", { pin });
     }, 1000);
+    if(actualRound==="one"){
+
+    }
 
     let questionArrayOne = localStorage.getItem("questionsRoundOne");
-    //    const questionArrayTwo =JSON.parse(localStorage.getItem("questionsTwo"));
-    //    const questionArrayThree = JSON.parse(localStorage.getItem("questionsThree"));
+    let questionArrayTwo =  localStorage.getItem("questionsRoundTwo");
+    let questionArrayThree =localStorage.getItem("questionsRoundThree");
     debugger;
+
     let answersArrayOne = localStorage.getItem("answersOne");
     //    const answersArrayOne=JSON.parse(localStorage.getItem("answersTwo"));
     //    const answersArrayOne=JSON.parse(localStorage.getItem("answersTwo"));
+
     debugger;
     questionArrayOne = questionArrayOne.split(",");
+    questionArrayTwo = questionArrayTwo.split(",");
+    questionArrayThree= questionArrayThree.split(",")
+
     answersArrayOne = answersArrayOne.split(",");
     answersArrayOne = JSON.parse(answersArrayOne);
     debugger;
@@ -111,7 +120,23 @@ export default class votingHost extends Component {
       questionArrayOne,
       answersArrayOne
     );
-    this.setState({ roundOne: roundOneArray });
+
+    let roundTwoArray= arrayOfQuestionsAndAnswers(
+      questionArrayTwo,
+      answersArrayOne
+      );
+      let roundThreeArray = arrayOfQuestionsAndAnswers(
+        questionArrayThree,
+        answersArrayOne
+      )
+    if(localStorage.getItem("actualRound")==="one"){
+      this.setState({roundOne:roundOneArray})
+    }else if(localStorage.getItem("actualRound")==="two"){
+      this.setState({roundOne:roundTwoArray})
+    }else if(localStorage.getItem("actualRound")==="three"){
+      this.setState({roundOne:roundThreeArray})
+    }
+   
     let count = 0;
     let players = localStorage.getItem("players");
     players = players.split(",");

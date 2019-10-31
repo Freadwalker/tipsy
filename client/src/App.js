@@ -12,6 +12,7 @@ import AnswerQuestions from "./Pages/answerQuestions";
 import votingHost from "./Pages/votingHost";
 import votingPlayer from "./Pages/votingPlayer";
 import scoreScreen from "./Pages/scoreScreen";
+import endscreen from "./Pages/endscreen";
 
 export default class App extends Component {
   render() {
@@ -30,7 +31,8 @@ export default class App extends Component {
           <Route exact path = "/votingHost" component = {votingHost}/>
           <Route exact path = "/votingPlayer" component = {votingPlayer}/>
           <Route path = "/scoreScreen" component = {scoreScreen}/>
-
+          <Route path = "/endscreen" component = {endscreen}/>
+          
         </Switch>
 
       </Router>

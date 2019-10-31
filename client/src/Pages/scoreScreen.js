@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./scoreScreen.scss"
+import io from "socket.io-client";
 export default class scoreScreen extends Component {
     constructor(props){
         super(props);
@@ -10,15 +11,31 @@ export default class scoreScreen extends Component {
         }
     }
     componentDidMount(){
+        const socket = io(`10.10.20.31:3001/game`);
+        const pin = localStorage.getItem("pin");
+        socket.emit("join",{pin});
+        let score =localStorage.getItem("players").split(",");
+
+        let actualRound= localStorage.getItem("actualRound")
         this.id=setTimeout(()=>{
-            this.props.history.push("/waitingQuestions")
+
+            if(actualRound==="one"){
+                localStorage.setItem("actualRound","two")
+                this.props.history.push("/waitingQuestions")
+            }else if(actualRound==="two"){
+                localStorage.setItem("actualRound","three")
+                this.props.history.push("/waitingQuestions")
+            }else if(actualRound==="three"){
+                this.props.history.push("/endscreen")
+            }
+            
         },60000)
     }
 
     componentWillUnmount() {
 
         clearTimeout(this.id)
-        
+
       }
     render() {
         return (

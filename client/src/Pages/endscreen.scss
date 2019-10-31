@@ -1,0 +1,26 @@
+.endscreenHeader{
+    font-size:7em;
+    text-align:center;
+}
+.endscreenMessage{
+    text-align:center;
+    font-size:2em;
+    font-weight:800;
+
+}
+#endscreen-container{
+    display:flex;
+    align-items:center;
+    flex-direction:column
+}
+.backButton{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    background-color:green;
+    width:50vw;
+    height:12vh;
+    margin-top:15vh;
+    font-size:2em;
+}

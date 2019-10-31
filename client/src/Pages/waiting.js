@@ -6,20 +6,21 @@ import { BrowserRouter as Router, Switch, Route, Link ,Redirect} from "react-rou
 export default class Waiting extends Component {
   state={
     redirectAnswer : false,
-    redirectVote:false
+    redirectVote:false,
   }
   componentDidMount(){
     const socket = io("10.10.20.31:3001/game");
     const pin = localStorage.getItem("pin");
-
+    this.setState({redirectAnswer:false,redirectVote:false})
     socket.emit("join",{pin:pin})
-    socket.on("game-started",data=>{
 
+    socket.on("game-started",data=>{
         this.setState({redirectAnswer:true})
     })
     socket.on("goVoting",()=>{
       this.setState({redirectVote:true})
     })
+
   }
 
   render() {

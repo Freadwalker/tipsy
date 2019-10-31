@@ -45,6 +45,9 @@ export default class voting extends Component {
         socket.on("nextQuestion",()=>{
             this.setState({show:true});
         })
+        socket.on("toScoreScreen",()=>{
+            this.props.history.push("/waiting");
+        })
     }
     render() {
         return (
