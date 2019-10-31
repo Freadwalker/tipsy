@@ -8,7 +8,7 @@ export default class Tutorial extends Component {
     redirect : false
   }
   componentDidMount(){
-    const socket = io(`10.10.20.31:3001/game`);
+    const socket = io(`${process.env.REACT_APP_API}/game`);
     const pin = localStorage.getItem("pin")
 
     this.id = setTimeout(() => { 

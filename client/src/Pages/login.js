@@ -22,7 +22,7 @@ export default class login extends Component {
     }
 
     const player = { username: this.state.username, pin: this.state.pin };
-    const socket = io(`10.10.20.31:3001/lobby`);
+    const socket = io(`${process.env.REACT_APP_API}/lobby`);
     
     socket.emit("signup", player);
 

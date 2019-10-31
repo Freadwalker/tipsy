@@ -22,7 +22,7 @@ export default class AnswerQuestions extends Component {
 
   componentDidMount(){
 
-    const socket = io("10.10.20.31:3001/game");
+    const socket = io(`${process.env.REACT_APP_API}/game`);
 
     const pin = localStorage.getItem("pin");
     const username = localStorage.getItem("username");
@@ -50,7 +50,7 @@ export default class AnswerQuestions extends Component {
     e.preventDefault();
     this.setState({questionOne:true})
     
-    const socket = io("10.10.20.31:3001/game");
+    const socket = io(`${process.env.REACT_APP_API}/game`);
     if(this.state.count===1){
       debugger
       let answers={

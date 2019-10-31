@@ -134,7 +134,7 @@ export default class Lobby extends Component {
 
   componentDidMount() {
     //setting up socket and pin
-    const socket = io("10.10.20.31:3001/lobby");
+    const socket = io(`${process.env.REACT_APP_API}/lobby`);
     const pin = this.state.pin;
 
     //saving lobby-pin in localStorage

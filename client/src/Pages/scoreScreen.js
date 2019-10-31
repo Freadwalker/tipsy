@@ -11,14 +11,14 @@ export default class scoreScreen extends Component {
         }
     }
     componentDidMount(){
-        const socket = io(`10.10.20.31:3001/game`);
+        const socket = io(`${process.env.REACT_APP_API}/game`);
         const pin = localStorage.getItem("pin");
         socket.emit("join",{pin});
         let score =localStorage.getItem("players").split(",");
 
         let actualRound= localStorage.getItem("actualRound")
         this.id=setTimeout(()=>{
-
+            
             if(actualRound==="one"){
                 localStorage.setItem("actualRound","two")
                 this.props.history.push("/waitingQuestions")
@@ -28,7 +28,7 @@ export default class scoreScreen extends Component {
             }else if(actualRound==="three"){
                 this.props.history.push("/endscreen")
             }
-            
+
         },60000)
     }
 
@@ -42,6 +42,7 @@ export default class scoreScreen extends Component {
             <div>
                 <h1 class="scoreHeader">These are the scores! </h1>
                 <ul class="scoreDisplay">
+
                 {this.state.players.map(element=>{
 
                     return(

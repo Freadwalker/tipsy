@@ -87,7 +87,7 @@ export default class votingHost extends Component {
   }
   componentDidMount() {
     debugger;
-    const socket = io(`10.10.20.31:3001/game`);
+    const socket = io(`${process.env.REACT_APP_API}/game`);
     const pin = localStorage.getItem("pin");
     const points = 100;
     let actualRound=localStorage.getItem("actualRound");

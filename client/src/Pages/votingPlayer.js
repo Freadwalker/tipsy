@@ -13,7 +13,7 @@ export default class voting extends Component {
     handleSubmit=(e)=>{
         e.preventDefault();
         const pin = localStorage.getItem("pin");
-        const socket = io(`10.10.20.31:3001/game`);
+        const socket = io(`${process.env.REACT_APP_API}/game`);
         const username = localStorage.getItem("username");
 
         let votePacket = {pin:pin,username:username}
@@ -28,7 +28,7 @@ export default class voting extends Component {
         e.preventDefault();
 
         const pin = localStorage.getItem("pin");
-        const socket = io(`10.10.20.31:3001/game`);
+        const socket = io(`${process.env.REACT_APP_API}/game`);
         const username = localStorage.getItem("username");
 
         let votePacket = {pin:pin,username:username}
@@ -38,7 +38,7 @@ export default class voting extends Component {
         this.setState({show:false})
     }
     componentDidMount(){
-        const socket = io("10.10.20.31:3001/game");
+        const socket = io(`${process.env.REACT_APP_API}/game`);
         const pin = localStorage.getItem("pin");
         socket.emit("join",{pin:pin})
 
