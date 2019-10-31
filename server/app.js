@@ -10,21 +10,26 @@ const cors = require("cors")
 // var userRouter = require("./socket-endpoints/createUser")
 
 require("dotenv").config()
-var server = require('http').createServer();
-var io = require('socket.io')(server);
 var app= express();
+app.use(express.static(path.join(__dirname, "public/build")));
+
+var server = require('http').createServer(app);
+
+var io = require('socket.io')(server);
 
 //mongoose setup
-
 require("./socket-endpoints/lobby")(io)
 require("./socket-endpoints/game")(io)
 
-app.use(
-  cors({
-    credentials:true,
-    origin:[`http://localhost:3000`]
-  })
-)
+if(process.env.environment === "DEVELOPMENT") {
+  app.use(
+    cors({
+      credentials:true,
+      origin:[`http://localhost:3000`]
+    })
+  )
+}
+
 server.listen(process.env.PORT, ()=> {
   console.log("Listening on port", process.env.PORT)
 })

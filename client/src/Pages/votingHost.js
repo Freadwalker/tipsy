@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import io from "socket.io-client";
 import "./votingHost.scss"
-
+import thumbsUp from "./thumb.png"
 function questionsDisplay(number) {
   return (
     <div class="questionsAndAnswers">
@@ -200,7 +200,7 @@ export default class votingHost extends Component {
             </div>
             <ul>
                 {this.state.votedByFirst.map(element=>{
-                 return( <li class="votedByList">{element}  likes this</li>)
+                 return( <li class="votedByList">{element}  <img class="thumbsUp" src={thumbsUp} /></li>)
                 })}
               </ul>
             </div>
@@ -217,7 +217,7 @@ export default class votingHost extends Component {
             </div>
             <ul>
                 {this.state.votedBySecond.map(element=>{
-                 return( <li class="votedByList">{element}     likes this</li>)
+                 return( <li class="votedByList">{element} <img class="thumbsUp" src={thumbsUp} /> </li>)
                 })}
               </ul>
             </div>

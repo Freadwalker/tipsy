@@ -1,20 +1,42 @@
 import React, { Component } from 'react'
 import "./scoreScreen.scss"
 import io from "socket.io-client";
+import beer from "./beer.png"
+import score from "./score.png"
 export default class scoreScreen extends Component {
     constructor(props){
         super(props);
         this.state={
             players:localStorage.getItem("players").split(","),
             count:0,
-            score:JSON.parse(localStorage.getItem("playerScore"))
+            score:[],
+            drinks:[]
         }
     }
     componentDidMount(){
         const socket = io(`${process.env.REACT_APP_API}/game`);
         const pin = localStorage.getItem("pin");
         socket.emit("join",{pin});
-        let score =localStorage.getItem("players").split(",");
+        let object =JSON.parse(localStorage.getItem("playerScore"));
+
+        var sortable = [];
+        for (var user in object) {
+            sortable.push([user, object[user]]);
+        }
+      
+        sortable.sort(function(a, b) {
+            return b[1] - a[1];
+      
+        });
+
+        this.setState({score:sortable})
+
+        let drinkArray=[];
+
+        drinkArray.push(sortable[sortable.length-1][0])
+        drinkArray.push(sortable[sortable.length-2][0])
+        drinkArray.push(sortable[sortable.length-3][0])
+        this.setState({drinks:drinkArray});
 
         let actualRound= localStorage.getItem("actualRound")
         this.id=setTimeout(()=>{
@@ -28,7 +50,6 @@ export default class scoreScreen extends Component {
             }else if(actualRound==="three"){
                 this.props.history.push("/endscreen")
             }
-
         },60000)
     }
 
@@ -40,17 +61,21 @@ export default class scoreScreen extends Component {
     render() {
         return (
             <div>
-                <h1 class="scoreHeader">These are the scores! </h1>
-                <ul class="scoreDisplay">
+                <h1 class="scoreHeader"><img src={score} class="scoreImage"/> </h1>
+                <ol class="scoreDisplay">
 
-                {this.state.players.map(element=>{
+                {this.state.score.map(element=>{
 
                     return(
               
-                 <li class="playerAndScore">{ element } : {this.state.score[element]}</li> 
+                 <li class="playerAndScore">{element[0]} : {element[1]}</li> 
                       )})}
-                            </ul>
-                  
+                            </ol>
+                  <div class="loserContainer">
+                 <div class="needsDrink"> <p>{this.state.drinks[0]}:</p><img src={beer} class="beerImage" /><img src={beer} class="beerImage" /><img src={beer} class="beerImage" /></div>          
+                 <div class="needsDrink"> <p>{this.state.drinks[1]}:</p><img src={beer} class="beerImage" /><img src={beer} class="beerImage" /></div>          
+                 <div class="needsDrink"> <p>{this.state.drinks[2]}:</p><img src={beer} class="beerImage" /></div>          
+                 </div>
                 
             </div>
         )

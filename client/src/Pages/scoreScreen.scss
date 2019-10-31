@@ -2,8 +2,8 @@
     font-size:2em;
     font-weight:900;
     text-align:center;
-    list-style-type: none;
     margin-bottom:20px;
+    list-style-position: inside;
 }
 
 .scoreHeader{
@@ -11,6 +11,28 @@
     
 }
 .scoreDisplay{
-    margin-top:24vh;
+
     border:solid 1px black
+}
+.beerImage{
+    width:40px;
+        
+}
+.needsDrink{
+    width:20vw;
+    font-size:2em;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    position:relative;
+    left:24vw;
+    animation:colorChangeColor  10s infinite;
+    flex-direction:row;
+}
+.scoreImage{
+    width:400px;
+}
+.loserContainer{
+    display:flex;
+    flex-direction:row;
 }
