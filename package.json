@@ -1,9 +1,10 @@
 {
   "name": "tipsy",
   "version": "1.0.0",
-  "description": "",
   "main": "#",
   "scripts": {
+    "install": "cd server && npm install",
+    "start": "cd server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,7 @@
   "bugs": {
     "url": "https://github.com/Freadwalker/tipsy/issues"
   },
-  "homepage": "https://github.com/Freadwalker/tipsy#readme"
+  "homepage": "https://github.com/Freadwalker/tipsy#readme",
+  "keywords": [],
+  "description": ""
 }
