@@ -61,7 +61,7 @@ export default class login extends Component {
             placeholder="GamePIN"
           />
 
-          <button type="submit" id="submit-button">
+          <button type="submit" id="submit-button-login">
             Join Lobby
           </button>
         </form>

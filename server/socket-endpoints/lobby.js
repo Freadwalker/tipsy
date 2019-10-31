@@ -1,5 +1,4 @@
-var Session = require("../models/sessions");
-var Player = require("../models/players");
+
 
 
 module.exports = function(io) {
@@ -7,8 +6,6 @@ module.exports = function(io) {
     io.of("/lobby").on("connection", client => {
         
         client.on("join-room", data=> {
-
-            Session.create({pin:data.pin})
             client.join(data.pin)
         })
 

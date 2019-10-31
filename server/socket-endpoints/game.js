@@ -1,5 +1,4 @@
-var Session = require("../models/sessions");
-var Player = require("../models/players");
+
 
 
 module.exports = function(io) {
@@ -28,13 +27,16 @@ module.exports = function(io) {
             client.to(data.pin).emit("goVoting")
         })
         client.on("voteFirst",data=>{
-            client.to(data.pin).emit("voteFirst")
+            client.to(data.pin).emit("voteFirst",data)
         })
         client.on("voteSecond",data=>{
-             client.to(data.pin).emit("voteSecond")
+             client.to(data.pin).emit("voteSecond",data)
         })
         client.on("nextQuestion",data=>{
             client.to(data.pin).emit("nextQuestion");
+        })
+        client.on("toScoreScreen",data=>{
+            client.to(data.pin).emit("toScoreScreen")
         })
     })
     

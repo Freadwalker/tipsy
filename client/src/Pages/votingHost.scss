@@ -1,0 +1,65 @@
+.questionsAndAnswers{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    
+}
+.bothPlayers{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.playerOne{
+
+
+    width:30vw;
+    // background-image:url("./searchpng.com-speech-bubble-png-image-free-download-2.png");
+    // background-size:cover;
+    
+    // text-align: center;
+    background-color:white;
+    margin-top:25vh;
+    border:solid black 1px;
+    border-radius:100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:10px;
+    margin-right:20px;
+}
+
+.playerTwo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:30vw;
+    margin-top:25vh;
+    background-color:white;
+    border:solid black 1px;
+    border-radius:100px;
+    flex-direction:column;
+    padding:30px;
+    margin-left:20px;
+}
+
+.text{
+    background-color:white;
+}
+.playerName{
+    font-size:1.5em;
+    font-weight:900;
+    
+}
+.answer{
+    font-size:2em;
+    font-weight:900;
+}
+
+.votedByList{
+    list-style-type:none ;
+    font-size:1.3em;
+    font-weight:900;
+}

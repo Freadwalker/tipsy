@@ -1,5 +1,6 @@
 import React, { Component } from 'react'   
 import io from "socket.io-client";
+import "./answerQuestions.scss"
 import { BrowserRouter as Router, Switch, Route, Link ,Redirect} from "react-router-dom";
 let count = 0;
 export default class AnswerQuestions extends Component {
@@ -70,9 +71,9 @@ export default class AnswerQuestions extends Component {
   showQuestion=()=>{
     
     if(this.state.questions && this.state.questionOne===true){
-      return <h1>{this.state.questions[1]}</h1>
+      return <h1 class="questionHeader">{this.state.questions[1]}</h1>
     }else if(this.state.questions){
-      return <h1>{this.state.questions[0]}</h1>
+      return <h1 class="questionHeader">{this.state.questions[0]}</h1>
     }else{
       return null
     }
@@ -88,12 +89,13 @@ export default class AnswerQuestions extends Component {
 
         <form onSubmit={this.handleSubmit} id="submit-answer">
 
-                  <input
+          <input
             class="input"
             onChange={this.handleChange}
             name="answer"
             id="answer-input"
             placeholder="type your answer here..."
+            autocomplete="off"
           />
 
                   <button type="submit" id="submit-button">

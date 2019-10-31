@@ -12,6 +12,7 @@ export default class WaitingQuestions extends Component {
   componentDidMount(){
   const socket= io(`10.10.20.31:3001/game`);
   const pin = localStorage.getItem("pin");
+  socket.emit("start-game",{pin:pin})
   const gameQuestionsOne= JSON.parse(localStorage.getItem("questionsOne"));
   let players=localStorage.getItem("players");
   players=players.split(",");
@@ -30,7 +31,7 @@ export default class WaitingQuestions extends Component {
         this.setState({redirect:true})
       }
   })
-
+  
   setTimeout( ()=>{socket.emit("questionsGameOne",gameQuestionsOne)},2000)
 
   }

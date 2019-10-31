@@ -1,4 +1,26 @@
 #waiting-questions-container{
+    display:flex;
     font-size:5em;
     text-align:center;
+    font-weight:1000;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    top:30vh;
+    
+}
+#waiting-questions-container p{
+    animation:colorChangeColor 11s infinite;
+}
+@keyframes colorChangeColor{
+    10%{color:blue}
+    20%{color:red;}
+    30%{color:green;}
+    40%{color:blue;}
+    50%{color: orange}
+    60%{color: violet}
+    70%{ color:blue}
+    80%{color: red;}
+    90%{color: green}
+    100%{color:orange}
 }

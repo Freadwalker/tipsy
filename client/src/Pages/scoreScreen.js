@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import "./scoreScreen.scss"
 export default class scoreScreen extends Component {
     constructor(props){
         super(props);
@@ -9,25 +9,31 @@ export default class scoreScreen extends Component {
             score:JSON.parse(localStorage.getItem("playerScore"))
         }
     }
-    // showScore(number){
-    //     let score = JSON.parse(localStorage.getItem("playerScore"));
-    //     let players=localStorage.getItem("players");
-    //     players=players.split(",");
-    //     let length = player.length;
-        
-    //         return(<div class="playerAndScore">{ players[i] } <span>has a score of:</span>
-    //          <span>{score[players[i]]}</span></div>)
+    componentDidMount(){
+        this.id=setTimeout(()=>{
+            this.props.history.push("/waitingQuestions")
+        },60000)
+    }
 
-    // }
+    componentWillUnmount() {
+
+        clearTimeout(this.id)
+        
+      }
     render() {
         return (
             <div>
-                <h1>These are the scores! </h1>
+                <h1 class="scoreHeader">These are the scores! </h1>
+                <ul class="scoreDisplay">
                 {this.state.players.map(element=>{
+
                     return(
-             <div class="playerAndScore"> { element } <span>has a score of:</span>
-             <span>{this.state.score[element]}</span> </div>
-                      )  })}
+              
+                 <li class="playerAndScore">{ element } : {this.state.score[element]}</li> 
+                      )})}
+                            </ul>
+                  
+                
             </div>
         )
     }

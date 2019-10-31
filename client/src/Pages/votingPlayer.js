@@ -14,15 +14,28 @@ export default class voting extends Component {
         e.preventDefault();
         const pin = localStorage.getItem("pin");
         const socket = io(`10.10.20.31:3001/game`);
-        socket.emit("voteFirst",{pin});
+        const username = localStorage.getItem("username");
+
+        let votePacket = {pin:pin,username:username}
+
+        socket.emit("voteFirst",votePacket);
+
         this.setState({show:false})
     }
 
     handleAlternate=(e)=>{
+
         e.preventDefault();
+
         const pin = localStorage.getItem("pin");
         const socket = io(`10.10.20.31:3001/game`);
-        socket.emit("voteSecond",{pin});
+        const username = localStorage.getItem("username");
+
+        let votePacket = {pin:pin,username:username}
+
+        socket.emit("voteSecond",votePacket);
+
+        this.setState({show:false})
     }
     componentDidMount(){
         const socket = io("10.10.20.31:3001/game");

@@ -12,10 +12,10 @@ export default class Tutorial extends Component {
     const pin = localStorage.getItem("pin")
 
     this.id = setTimeout(() => { 
-      socket.emit("start-game",{pin:pin})
+      
       this.setState({ redirect: true })
 
-  },10000)
+  },10500)
   }
 
   componentWillUnmount() {

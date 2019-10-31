@@ -1,0 +1,28 @@
+#answer-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+#submit-answer{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:50vw;
+}
+#answer-input{
+   width:80vw
+}
+#submit-button{
+    position:relative;
+    width:35vw;
+    border-radius:100px;
+    height:17vh;
+    top:20vh;
+    background-color:green;
+    font-size:2em;
+    color:white;
+    font-weight:900;
+    border-style:none
+}

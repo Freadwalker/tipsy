@@ -11,7 +11,7 @@ let object ={}
 for(let i = 0;i < array.length;i++){
   object[array[i]]=0;
 }
-return object
+return object 
 }
 let questions=[
   
@@ -118,6 +118,7 @@ export default class Lobby extends Component {
       localStorage.setItem("questionsRoundOne",questionsRoundOne);
       localStorage.setItem("questionsRoundTwo",questionsRoundTwo);
       localStorage.setItem("questionsRoundThree",questionsRoundThree);
+      localStorage.setItem("actualRound","one");
 
       const questionsOne= pair(this.state.players,questionsArrayGame[0])
       const questionsTwo= pair(this.state.players,questionsArrayGame[1])
