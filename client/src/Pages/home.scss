@@ -1,3 +1,4 @@
+
 #create-button{
     background-color:rgb(245, 66, 66)
 }
@@ -21,6 +22,10 @@
 }
 #home-container{ 
     font-family:roboto;
+    width:100vw;
+    height:120vh;
+    background-color:#FFC1C1;
+    background-size:cover;
 }
 .linkButton{
     display:flex;

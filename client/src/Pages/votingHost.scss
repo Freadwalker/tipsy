@@ -32,14 +32,18 @@
 }
 
 .playerTwo{
+    width:30vw;
+    // background-image:url("./searchpng.com-speech-bubble-png-image-free-download-2.png");
+    // background-size:cover;
+    
+    // text-align: center;
+    background-color:white;
+    margin-top:25vh;
+    border:solid black 1px;
+    border-radius:100px;
     display:flex;
     justify-content:center;
     align-items:center;
-    width:30vw;
-    margin-top:25vh;
-    background-color:white;
-    border:solid black 1px;
-    border-radius:100px;
     flex-direction:column;
     padding:30px;
     margin-left:20px;
@@ -56,6 +60,7 @@
 .answer{
     font-size:2em;
     font-weight:900;
+    max-width:350px
 }
 
 .votedByList{
@@ -65,4 +70,11 @@
 }
 .thumbsUp{
     width:30px;
+}
+
+#vote-screen-container{
+    width:100vw;
+    height:100vh;
+    background-image:url("./votingBackground.jpg");
+    background-size:cover;
 }
