@@ -4,14 +4,13 @@
     text-align:center;
     margin-bottom:20px;
     list-style-position: inside;
+    color:gold;
 }
 
 .scoreHeader{
     text-align:center;
-    
 }
 .scoreDisplay{
-
     border:solid 1px black
 }
 .beerImage{
@@ -35,4 +34,11 @@
 .loserContainer{
     display:flex;
     flex-direction:row;
+}
+.scoreContainer{
+    width:100vw;
+    height:100vh;
+    background-image:url("./jason-leung-Xaanw0s0pMk-unsplash.jpg");
+    background-size:cover;
+    position:fixed;
 }

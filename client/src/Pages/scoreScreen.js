@@ -60,7 +60,8 @@ export default class scoreScreen extends Component {
       }
     render() {
         return (
-            <div>
+            <div class="scoreContainer">
+            
                 <h1 class="scoreHeader"><img src={score} class="scoreImage"/> </h1>
                 <ol class="scoreDisplay">
 

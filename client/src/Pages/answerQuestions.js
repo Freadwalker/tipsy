@@ -71,9 +71,9 @@ export default class AnswerQuestions extends Component {
   showQuestion=()=>{
     
     if(this.state.questions && this.state.questionOne===true){
-      return <h1 class="questionHeader">{this.state.questions[1]}</h1>
+      return <h1 class="questionHeaderPlayer">{this.state.questions[1]}</h1>
     }else if(this.state.questions){
-      return <h1 class="questionHeader">{this.state.questions[0]}</h1>
+      return <h1 class="questionHeaderPlayer">{this.state.questions[0]}</h1>
     }else{
       return null
     }

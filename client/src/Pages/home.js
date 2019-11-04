@@ -12,8 +12,8 @@ export default class Home extends Component {
 
         <div id="home-controls">
 
-        <Link to="/lobby" id ="create-button" class="button linkButton"> Create</Link>
         <Link to="/login" id ="join-button" class="button linkButton"> Join</Link>
+        <Link to="/lobby" id ="create-button" class="button linkButton"> Create</Link>
         </div>  
 
       </div>

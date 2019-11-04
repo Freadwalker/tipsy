@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import io from "socket.io-client";
 import "./votingHost.scss"
-import thumbsUp from "./thumb.png"
+import thumbsUp from "./thumbsUP.png"
 function questionsDisplay(number) {
   return (
     <div class="questionsAndAnswers">

@@ -5,6 +5,12 @@
     flex-direction:column;
     
 }
+.questionHeader{
+    color:white;
+    font-weight:900;
+    font-size:4em;
+    text-shadow: 2px 2px #ff0000;
+}
 .bothPlayers{
     display:flex;
     flex-direction:row;
@@ -19,8 +25,8 @@
     // background-size:cover;
     
     // text-align: center;
-    background-color:white;
-    margin-top:25vh;
+    background-color:blue;
+    margin-top:30vh;
     border:solid black 1px;
     border-radius:100px;
     display:flex;
@@ -29,6 +35,7 @@
     flex-direction:column;
     padding:30px;
     margin-right:20px;
+    color:white;
 }
 
 .playerTwo{
@@ -37,8 +44,8 @@
     // background-size:cover;
     
     // text-align: center;
-    background-color:white;
-    margin-top:25vh;
+    background-color:red;
+    margin-top:30vh;
     border:solid black 1px;
     border-radius:100px;
     display:flex;
@@ -47,11 +54,10 @@
     flex-direction:column;
     padding:30px;
     margin-left:20px;
+    color:white;
 }
 
-.text{
-    background-color:white;
-}
+
 .playerName{
     font-size:1.5em;
     font-weight:900;
@@ -65,11 +71,13 @@
 
 .votedByList{
     list-style-type:none ;
-    font-size:1.3em;
+    font-size:1.6em;
     font-weight:900;
+    display:flex;
+    align-items:center;
 }
 .thumbsUp{
-    width:30px;
+    width:50px;
 }
 
 #vote-screen-container{
