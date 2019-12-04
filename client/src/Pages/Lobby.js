@@ -17,12 +17,10 @@ let questions=[
   
   "The worst life decision one could make?",
   "Hey Baby come back to my place and I show you______",
-  "What brought the Orgy to a grinding halt?",
   "I drink to forget_____",
   "Coming to Cinema this Season______ The Movie.",
   "It's a pity that kids these days all get involved with____",
   "The class trip field was completely ruined by_______",
-  "I got 99 problems but _____ ain't one",
   "But before I kill you Mr.Bond I must show you_____",
   "After the earthquake Sean Penn brought_______to the people in Haiti.",
   "During Sex I like to think about _______",
@@ -30,7 +28,6 @@ let questions=[
   "A romantic candlelight dinner would be incomplete without _______",
   "Next from J.K. Harry Potter and the Chamber of _______",
   "Instead of coal Santa now gives the bad children ________",
-  "What's worse than the Holocaust?",
   "I always carry_______ in my purse.",
   "Sometimes I just look at the kids and I think______",
   "What's your favorite kind of torture?",
@@ -158,7 +155,9 @@ export default class Lobby extends Component {
     super(props);
     this.state = {
       pin: ""+(Math.floor(Math.random() * 90000) + 10000),
-      players: []
+      players: [],
+      error:false
+
     };
   }
 
@@ -166,7 +165,10 @@ export default class Lobby extends Component {
 
   handleSubmit=(e)=>{
       e.preventDefault();
-        
+      if(this.state.players.length<3){
+        this.setState({error:true})
+        return
+      }
       localStorage.setItem("playerCount",this.state.players.length)
       localStorage.setItem("players",this.state.players)
       localStorage.setItem("playerScore",JSON.stringify(createPlayerScore(this.state.players)))
@@ -219,7 +221,7 @@ export default class Lobby extends Component {
 
       <div id="lobby-container">
         <h1 class="lobbyHeader">Lobby</h1>
-        <div class="lobby-key">
+        <div id="lobby-key">
           <span>Lobby Key: </span>
           {this.state.pin}
         </div>
@@ -232,7 +234,7 @@ export default class Lobby extends Component {
 
         </ul>
         <form onSubmit={this.handleSubmit} id="login-controls">
-
+        {this.state.error?<div>There have to be at least 3 Players in the lobby to start!</div>:null}
         <button id="start-game-button">Start Game</button>
         
         </form>

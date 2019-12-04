@@ -13,7 +13,7 @@ export default class WaitingQuestions extends Component {
   state = {
     redirect: false,
     count: 0
-  };
+  };   
   componentDidMount() {
     debugger
     const socket = io(`${process.env.REACT_APP_API}/game`);

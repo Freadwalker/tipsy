@@ -1,7 +1,7 @@
 import React, { Component } from 'react'   
 import io from "socket.io-client";
 import "./answerQuestions.scss"
-import { BrowserRouter as Router, Switch, Route, Link ,Redirect} from "react-router-dom";
+import { BrowserRouter as Redirect} from "react-router-dom";
 let count = 0;
 export default class AnswerQuestions extends Component {
   constructor(props){

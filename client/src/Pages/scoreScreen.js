@@ -50,7 +50,7 @@ export default class scoreScreen extends Component {
             }else if(actualRound==="three"){
                 this.props.history.push("/endscreen")
             }
-        },60000)
+        },30000)
     }
 
     componentWillUnmount() {
